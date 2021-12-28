@@ -1,0 +1,121 @@
+.home {
+  background-image: $home-mobile;
+
+  @media(min-width: $tablet) {
+    background-image: $home-tablet;
+  }
+
+  @media(min-width: $desktop) {
+    background-image: $home-desktop;
+  }
+
+  .header__nav {
+    @supports (not (backdrop-filter: blur(81.5px))) {
+      background-image: $home-mobile;
+
+      @media(min-width: $tablet) {
+        background-image: $home-tablet;
+      }
+    
+      @media(min-width: $desktop) {
+        background-image: $home-desktop;
+      }
+    }
+  }
+
+  .content {
+    @include flex($direction: column, $justify: flex-end);
+
+    padding-top: 48px;
+
+    @media(min-width: $tablet) {
+      padding-top: 106px;
+      padding-bottom: 95px;
+    }
+  }
+
+  &__content {
+    @include flex($direction: column);
+
+    max-width: 1110px;
+    width: 100%;
+    row-gap: 48px;
+    flex: 1;
+    margin: 0 auto;
+
+    @media(min-width: $desktop) {
+      flex-direction: row;
+      align-items: flex-end;
+      flex: none;
+    }
+
+    &__text {
+      text-align: center;
+      max-width: 450px;
+
+      @media(min-width: $desktop) {
+        text-align: left;
+      }
+
+      h1 {
+        margin-bottom: 16px;
+        
+        @media(min-width: $desktop) {
+          margin-bottom: 24px;
+        }
+
+        .h5 {
+          display: block;
+          margin-bottom: 16px;
+        
+          @media(min-width: $desktop) {
+            margin-bottom: 24px;
+          }
+        }
+      }
+    }
+
+    &__button {
+      @include flex($justify: center);
+
+      width: 150px;
+      height: 150px;
+      background-color: white;
+      border-radius: 50%;
+      font-family: 'Bellefair', serif;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 120%;
+      letter-spacing: 1.25px;
+      text-transform: uppercase;
+      color: $color-dark-blue;
+      transition: box-shadow 0.3s ease;
+
+      @media(min-width: $tablet) {
+        width: 242px;
+        height: 242px;
+        font-size: 32px;
+        letter-spacing: 2px;
+      }
+
+      @media(min-width: $desktop) {
+        width: 274px;
+        height: 274px;
+      }
+
+      &:hover,
+      &:focus {
+        color: $color-dark-blue;
+        box-shadow: 0 0 0 48px rgba(white, 0.1);
+
+        @media(min-width: $tablet) {
+          box-shadow: 0 0 0 78px rgba(white, 0.1);
+        }
+  
+        @media(min-width: $desktop) {
+          box-shadow: 0 0 0 88px rgba(white, 0.1);
+        }
+      }
+    }
+  }
+}

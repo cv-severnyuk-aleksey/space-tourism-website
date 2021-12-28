@@ -1,0 +1,124 @@
+@function unpack($shorthand) {
+  @if length($shorthand) == 1 {
+    @return nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1);
+  } @else if length($shorthand) == 2 {
+    @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 1) nth($shorthand, 2);
+  } @else if length($shorthand) == 3 {
+    @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 3) nth($shorthand, 2);
+  } @else {
+    @return $shorthand;
+  }
+}
+
+// Position
+// Ex:
+//     @include position(absolute, 10px 20px 30px 40px);
+
+@mixin position($position: relative, $coordinates: null null null null) {
+  @if type-of($position) == list {
+    $coordinates: $position;
+    $position: relative;
+  }
+
+  $coordinates: unpack($coordinates);
+
+  $offsets: (
+    top: nth($coordinates, 1),
+    right: nth($coordinates, 2),
+    bottom: nth($coordinates, 3),
+    left: nth($coordinates, 4),
+  );
+
+  position: $position;
+
+  @each $offset, $value in $offsets {
+    @if is-length($value) {
+      #{$offset}: $value;
+    }
+  }
+}
+
+// Pseudo element
+// Ex:
+//    @include pseudoElement(before, 10px, 20px) {
+//      some code
+//    }
+
+@mixin pseudoElement($el, $el-width, $el-height) {
+  @if $el == 'before' or $el == 'after' {
+    &::#{$el} {
+      content: '';
+      width: $el-width;
+      height: $el-height;
+      @content;
+    }
+  }
+
+  @if $el == 'both' {
+    &::before,
+    &::after {
+      content: '';
+      width: $el-width;
+      height: $el-height;
+      @content;
+    }
+  }
+}
+
+// Placeholder
+// Ex:
+//    @include placeholder {
+//      some code
+//    }
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// Flex
+// Ex:
+//    @include flex($justify: space-between, $align: center, $direction: row, $wrap: wrap) {
+//      some code
+//    }
+
+@mixin flex($justify: space-between, $align: center, $direction: null, $wrap: null) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+
+  @if is-length($direction) {
+    flex-direction: $direction;
+  }
+
+  @if is-length($wrap) {
+    flex-wrap: $wrap;
+  }
+}
+
+// Webp Background
+// Ex:
+//    @include webp-background(url('test.webp'), url('test.jpg'))
+
+@mixin webp-background($webp, $fallback) {
+  .no-webp & {
+    background-image: $fallback;
+  }
+
+  & {
+    background-image: $webp;
+  }
+}

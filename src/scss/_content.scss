@@ -1,0 +1,22 @@
+.wrapper {
+  background: center center no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.content {
+  padding: 24px 24px 48px;
+  min-height: calc(100vh - 112px);
+
+  @media(min-width: $tablet) {
+    min-height: calc(100vh - 136px);
+    padding: 40px 40px 60px;
+  }
+
+  @media(min-width: $desktop) {
+    min-height: calc(100vh - 212px);
+    padding: 76px 55px 48px;
+  }
+}
