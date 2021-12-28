@@ -17,7 +17,7 @@
 
 ### Links
 
-- Live Site URL: [https://sdhnik.github.io/space-tourism-website/](https://sdhnik.github.io/space-tourism-website/)
+- Live Site URL: [https://cv-severnyuk-aleksey.github.io/space-tourism-website/](https://cv-severnyuk-aleksey.github.io/space-tourism-website/)
 
 ## My process
 
@@ -32,5 +32,5 @@
 
 ## Author
 
-- Website - [sdhnik](https://github.com/sdhnik)
+- Website - [cv-severnyuk-aleksey](https://github.com/cv-severnyuk-aleksey)
 
